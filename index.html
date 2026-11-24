@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SANA — Autonomous Precision Health & Care Ecosystem</title>
+  
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Noir Design System Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Noise and Grain Background Effects -->
+  <canvas id="ambientCanvas"></canvas>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Top Real-time Announcement Bar -->
+  <div class="top-announcement">
+    <span><i class="fa-solid fa-bolt text-cyan"></i> SANA Neural Clinical Protocol v3.4 is live across 42 global centers.</span>
+    <a href="#architecture">Review Technical Specifications <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+
+  <!-- Sticky Frosted Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="#" class="brand-wrap" aria-label="Sana Platform Home">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="brand-name">SANA</span>
+        <span class="brand-tag">OS 3.4</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu">
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#interactive-preview" class="nav-link">Terminal Preview</a>
+        <a href="#telemetry" class="nav-link">Clinical Impact</a>
+        <a href="#wall-of-hope" class="nav-link">Wall of Hope</a>
+        <a href="#testimonials" class="nav-link">Voices</a>
+        <a href="#faq" class="nav-link">Knowledge</a>
+      </nav>
+
+      <!-- Desktop Nav Actions -->
+      <div class="nav-actions">
+        <button class="btn btn-glass-pill open-auth-modal" data-mode="signin">
+          <i class="fa-regular fa-user"></i>
+          <span>Sign In</span>
+        </button>
+        <button class="btn btn-silver-pill open-auth-modal" data-mode="signup">
+          <span>Priority Access</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-wrap">
+        <span class="brand-name">SANA</span>
+        <span class="brand-tag">OS 3.4</span>
+      </div>
+      <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="#architecture" class="mobile-nav-link">Architecture</a>
+      <a href="#interactive-preview" class="mobile-nav-link">Terminal Preview</a>
+      <a href="#telemetry" class="mobile-nav-link">Clinical Impact</a>
+      <a href="#wall-of-hope" class="mobile-nav-link">Wall of Hope</a>
+      <a href="#testimonials" class="mobile-nav-link">Voices</a>
+      <a href="#faq" class="mobile-nav-link">Knowledge</a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-glass-pill w-100 open-auth-modal" data-mode="signin">Sign In</button>
+      <button class="btn btn-silver-pill w-100 open-auth-modal" data-mode="signup">Get Access</button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- HERO SECTION: THE UI INSPIRATION INTEGRATED & ELEVATED -->
+    <section class="hero-section" id="hero">
+      <div class="hero-glow-backdrop" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        
+        <!-- Left Value Proposition Column -->
+        <div class="hero-left">
+          <div class="pill-badge">
+            <span class="status-dot"></span>
+            <span>Autonomous Precision Care Ecosystem</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Where Deep Science <br>
+            <span class="text-silver-gradient">Meets Human Sovereignty.</span>
+          </h1>
+
+          <p class="hero-lead">
+            SANA merges genomic diagnostic intelligence, decentralized treatment advocacy, and zero-latency patient relief funds into an uncompromising platform for human longevity.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#interactive-preview" class="btn btn-silver-pill btn-silver-lg">
+              <span>Explore Live Terminal</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="#architecture" class="btn btn-glass-pill btn-glass-lg">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Core Architecture</span>
+            </a>
+          </div>
+
+          <!-- Trust & Clinical Footprint Bar -->
+          <div class="hero-trust-strip">
+            <div class="avatar-stack">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Sana Member">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Sana Member">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Sana Member">
+              <span class="avatar-count">+48k</span>
+            </div>
+            <div class="trust-stats-text">
+              <strong>148,000+ Verified Patient Encounters</strong>
+              <span>Deployed across 42 accredited clinical research networks.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: The 1:1 Inspiration Card Split Layout -->
+        <div class="hero-card-perspective">
+          <div class="inspiration-card" id="heroAuthCard">
+            
+            <!-- Left Form Pane of the Inspiration Card -->
+            <div class="card-form-pane">
+              <!-- Mode Tabs -->
+              <div class="auth-mode-tabs" role="tablist">
+                <button type="button" class="auth-tab-btn active" id="heroTabSignIn" onclick="switchHeroAuthMode('signin')">Sign In</button>
+                <button type="button" class="auth-tab-btn" id="heroTabSignUp" onclick="switchHeroAuthMode('signup')">Create Account</button>
+              </div>
+
+              <div class="form-header-box">
+                <h3 class="form-title" id="heroAuthHeading">Welcome Back</h3>
+                <p class="form-subtitle" id="heroAuthSub">Enter your sovereign credentials to access your portal</p>
+              </div>
+
+              <!-- Interactive Form Directly Matching Inspiration Style -->
+              <form class="inspiration-form" id="heroAuthForm" onsubmit="handleHeroAuthSubmit(event)">
+                
+                <!-- Dual First / Last Name Row (Exact Inspiration Pill Layout) -->
+                <div class="pill-row" id="heroNameRow">
+                  <div class="pill-input-wrap">
+                    <input type="text" class="inspiration-input" id="heroFirstName" placeholder="First Name" autocomplete="given-name">
+                  </div>
+                  <div class="pill-input-wrap">
+                    <input type="text" class="inspiration-input" id="heroLastName" placeholder="Last Name" autocomplete="family-name">
+                  </div>
+                </div>
+
+                <!-- Email Input -->
+                <div class="pill-input-wrap">
+                  <input type="email" class="inspiration-input" id="heroEmail" placeholder="Email Address" required autocomplete="email">
+                  <span class="input-icon-btn" title="Encrypted channel">
+                    <i class="fa-solid fa-lock"></i>
+                  </span>
+                </div>
+
+                <!-- Password Input with Toggle -->
+                <div class="pill-input-wrap">
+                  <input type="password" class="inspiration-input" id="heroPassword" placeholder="Password" required autocomplete="current-password">
+                  <button type="button" class="input-icon-btn" onclick="togglePasswordVisibility('heroPassword', this)" aria-label="Toggle password view">
+                    <i class="fa-regular fa-eye-slash"></i>
+                  </button>
+                </div>
+
+                <!-- Options Row -->
+                <div class="form-utility-row">
+                  <label class="remember-label">
+                    <input type="checkbox" class="custom-checkbox" checked id="heroRememberCheck">
+                    <span>Remember 30 days</span>
+                  </label>
+                  <a href="javascript:void(0)" onclick="handleForgotPasswordNotice()" class="forgot-btn">Forgot password?</a>
+                </div>
+
+                <!-- The Exact Inspiration Silver Pill Button -->
+                <button type="submit" class="btn-inspiration-submit" id="heroSubmitBtn">
+                  <span id="heroSubmitBtnLabel">Sign in</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <!-- SSO Single-Click Divider & Pills -->
+                <div class="sso-divider">
+                  <span class="sso-divider-line"></span>
+                  <span class="sso-divider-text">or continue with</span>
+                  <span class="sso-divider-line"></span>
+                </div>
+
+                <div class="sso-pills-row">
+                  <button type="button" class="btn-sso" onclick="handleSsoSimulation('Google')">
+                    <i class="fa-brands fa-google"></i>
+                    <span>Google</span>
+                  </button>
+                  <button type="button" class="btn-sso" onclick="handleSsoSimulation('Apple')">
+                    <i class="fa-brands fa-apple"></i>
+                    <span>Apple</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Right Art Pane: The Exact Grainy Metallic Light Arc Artwork -->
+            <div class="card-art-pane">
+              <img src="assets/noir_artwork.png" alt="Sana Noir Radiant Light Beam Texture" class="art-texture-img" loading="eager">
+              <div class="art-gradient-overlay"></div>
+
+              <!-- Floating Micro-Telemetry Widget on the Art -->
+              <div class="floating-telemetry-badge">
+                <div class="telemetry-row">
+                  <span class="telemetry-tag"><i class="fa-solid fa-shield-halved"></i> VAULT ENCRYPTED</span>
+                  <span class="telemetry-time">256-BIT AES</span>
+                </div>
+                <div class="telemetry-title">Sovereign Health Intelligence Mesh</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: LIVE METRICS & TELEMETRY STRIP -->
+    <section class="telemetry-strip-section" id="telemetry">
+      <div class="container">
+        <div class="telemetry-grid">
+          
+          <div class="telemetry-item">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="148000">0</span>
+              <span class="stat-suffix">+</span>
+            </div>
+            <div class="stat-caption">Patient Journeys Supported</div>
+            <div class="stat-subtext">Direct care assistance & diagnostic screening</div>
+          </div>
+
+          <div class="telemetry-item">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="99.4" data-decimals="1">0</span>
+              <span class="stat-suffix">%</span>
+            </div>
+            <div class="stat-caption">Direct Fund Allocation</div>
+            <div class="stat-subtext">Audited transparent patient relief disbursement</div>
+          </div>
+
+          <div class="telemetry-item">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="48">0</span>
+              <span class="stat-suffix">Hrs</span>
+            </div>
+            <div class="stat-caption">Average Grant Turnaround</div>
+            <div class="stat-subtext">Rapid review without systemic administrative drag</div>
+          </div>
+
+          <div class="telemetry-item">
+            <div class="stat-value">
+              <span class="stat-counter" data-target="42">0</span>
+              <span class="stat-suffix">Centres</span>
+            </div>
+            <div class="stat-caption">Global Clinical Partners</div>
+            <div class="stat-subtext">Integrated diagnostic laboratories & hospitals</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ARCHITECTURE (BENTO GRID MATRIX) -->
+    <section class="features-section" id="architecture">
+      <div class="container">
+        <div class="section-head">
+          <div class="pill-badge">System Architecture</div>
+          <h2 class="section-title">Engineered for Sovereign Longevity</h2>
+          <p class="section-lead">
+            Every layer of SANA is designed to eliminate friction between clinical breakthroughs and the human beings who urgently need them.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          
+          <!-- Bento 1: Autonomous Genomic Screening (Span 8) -->
+          <div class="bento-card bento-col-8">
+            <div>
+              <div class="bento-icon-box">
+                <i class="fa-solid fa-dna"></i>
+              </div>
+              <div class="bento-tag">Diagnostic Intelligence</div>
+              <h3 class="bento-title">Predictive Biomarker & Multi-Omics Profiling</h3>
+              <p class="bento-desc">
+                High-throughput sequencing analysis cross-referenced with global oncology registries, detecting disease signatures up to 18 months before clinical onset.
+              </p>
+            </div>
+            <!-- Interactive Visual: Waveform telemetry -->
+            <div class="waveform-preview" title="Simulated genomic sequence signal">
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+            </div>
+          </div>
+
+          <!-- Bento 2: Sovereign Health Vault (Span 4) -->
+          <div class="bento-card bento-col-4">
+            <div>
+              <div class="bento-icon-box">
+                <i class="fa-solid fa-fingerprint"></i>
+              </div>
+              <div class="bento-tag">Zero-Knowledge Security</div>
+              <h3 class="bento-title">The Sovereign Health Vault</h3>
+              <p class="bento-desc">
+                Your medical telemetry, clinical notes, and genomic records remain strictly encrypted on decentralized hardware. You hold the cryptographic keys.
+              </p>
+            </div>
+            <div class="pill-badge">
+              <i class="fa-solid fa-shield-check text-emerald"></i>
+              <span>HIPAA & SOC-2 Verified</span>
+            </div>
+          </div>
+
+          <!-- Bento 3: Direct Emergency Aid Grants (Span 4) -->
+          <div class="bento-card bento-col-4">
+            <div>
+              <div class="bento-icon-box">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+              <div class="bento-tag">Emergency Care Funds</div>
+              <h3 class="bento-title">Unconditional Patient Relief</h3>
+              <p class="bento-desc">
+                Micro-grants deployed within 48 hours for lodging, specialized travel, and life-critical treatment subsidies.
+              </p>
+            </div>
+            <div class="grant-meter-box">
+              <div class="meter-header">
+                <span>Fund Deployment Efficiency</span>
+                <strong>99.4%</strong>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento 4: Collaborative Clinical Mesh (Span 8) -->
+          <div class="bento-card bento-col-8">
+            <div>
+              <div class="bento-icon-box">
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+              <div class="bento-tag">Decentralized Trials</div>
+              <h3 class="bento-title">Continuous Care Navigation & Open Trials</h3>
+              <p class="bento-desc">
+                Connecting patients directly to leading oncologists, trial coordinators, and second-opinion panels without territorial gatekeeping or hospital bureaucracy.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+              <span class="pill-badge"><i class="fa-solid fa-check text-emerald"></i> 24/7 Human Advocate</span>
+              <span class="pill-badge"><i class="fa-solid fa-check text-emerald"></i> Real-time Trial Matching</span>
+              <span class="pill-badge"><i class="fa-solid fa-check text-emerald"></i> Direct Grant Routing</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: INTERACTIVE TERMINAL PLAYGROUND -->
+    <section class="terminal-section" id="interactive-preview">
+      <div class="container">
+        <div class="section-head">
+          <div class="pill-badge">Live System Interface</div>
+          <h2 class="section-title">Experience the SANA Terminal</h2>
+          <p class="section-lead">
+            Toggle between role perspectives to explore how SANA unifies patient records, clinical adjudication, and research pipelines in real time.
+          </p>
+        </div>
+
+        <div class="terminal-shell">
+          <!-- Terminal Title Bar -->
+          <div class="terminal-top-bar">
+            <div class="terminal-dots">
+              <span class="terminal-dot active-red"></span>
+              <span class="terminal-dot active-yellow"></span>
+              <span class="terminal-dot active-green"></span>
+            </div>
+
+            <!-- Perspective Tabs -->
+            <div class="terminal-nav-tabs">
+              <button class="terminal-tab active" data-view="patient" onclick="switchTerminalView('patient', this)">
+                <i class="fa-solid fa-user-shield"></i> Patient Vault
+              </button>
+              <button class="terminal-tab" data-view="clinician" onclick="switchTerminalView('clinician', this)">
+                <i class="fa-solid fa-stethoscope"></i> Physician Advocate
+              </button>
+              <button class="terminal-tab" data-view="researcher" onclick="switchTerminalView('researcher', this)">
+                <i class="fa-solid fa-flask-vial"></i> Clinical Trials
+              </button>
+            </div>
+
+            <div class="terminal-status-badge">
+              <span class="status-dot"></span>
+              <span>LIVE TELEMETRY STREAM</span>
+            </div>
+          </div>
+
+          <!-- View 1: Patient Health Vault -->
+          <div class="terminal-content-view active" id="terminalPatientView">
+            <div class="portal-telemetry-grid">
+              
+              <div class="data-panel-card">
+                <div class="panel-title">
+                  <span>Active Biomarker Panel (Liquid Biopsy)</span>
+                  <span class="pill-badge">Updated 4m ago</span>
+                </div>
+                
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>Circulating Tumor ctDNA Fraction</strong>
+                    <span>Target threshold &lt; 0.02%</span>
+                  </div>
+                  <span class="biomarker-badge badge-optimal">0.008% (Optimal)</span>
+                </div>
+
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>CA 15-3 Cellular Glycoprotein</strong>
+                    <span>Serum index standard: 12-30 U/mL</span>
+                  </div>
+                  <span class="biomarker-badge badge-optimal">18.4 U/mL (Normal)</span>
+                </div>
+
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>NLR Systemic Inflammatory Ratio</strong>
+                    <span>Predictive recovery marker</span>
+                  </div>
+                  <span class="biomarker-badge badge-review">1.92 (Reviewing)</span>
+                </div>
+
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>Genomic Microsatellite Stability</strong>
+                    <span>MSI-H / MSS status</span>
+                  </div>
+                  <span class="biomarker-badge badge-optimal">Stable (High Res)</span>
+                </div>
+              </div>
+
+              <div class="data-panel-card">
+                <div class="panel-title">
+                  <span>Care Pathway Milestones</span>
+                  <i class="fa-solid fa-timeline text-muted"></i>
+                </div>
+
+                <div class="care-timeline-item">
+                  <span class="timeline-date">Nov 28, 2026</span>
+                  <div class="timeline-title">Subsidized Whole-Exome Sequencing</div>
+                  <p class="stat-subtext">Memorial Sloan Clinical Partner Lab</p>
+                </div>
+
+                <div class="care-timeline-item">
+                  <span class="timeline-date">Dec 04, 2026</span>
+                  <div class="timeline-title">Direct Travel Grant Disbursed ($1,200)</div>
+                  <p class="stat-subtext">Automated relief for specialized immunotherapy</p>
+                </div>
+
+                <div class="care-timeline-item">
+                  <span class="timeline-date">Dec 12, 2026</span>
+                  <div class="timeline-title">Dedicated Oncologist Second Opinion</div>
+                  <p class="stat-subtext">Dr. Raymond Vance, MD (Confirmed)</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- View 2: Clinician Advocate Terminal -->
+          <div class="terminal-content-view" id="terminalClinicianView">
+            <div class="portal-telemetry-grid">
+              <div class="data-panel-card">
+                <div class="panel-title">
+                  <span>Active Patient Triage Queue</span>
+                  <span class="pill-badge"><i class="fa-solid fa-bolt text-cyan"></i> 14 Pending Review</span>
+                </div>
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>Case #SN-89241 — Stage II Triple-Negative Protocol</strong>
+                    <span>Emergency Grant Approved &bull; St. Luke's Oncology</span>
+                  </div>
+                  <span class="biomarker-badge badge-optimal">Disbursed</span>
+                </div>
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>Case #SN-89242 — Pediatric Rare Sarcoma Genomic Match</strong>
+                    <span>Trial Protocol S-9003 Initiated &bull; Johns Hopkins Partner</span>
+                  </div>
+                  <span class="biomarker-badge badge-review">Enrolling</span>
+                </div>
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>Case #SN-89243 — Caregiver Lodging Subsidy</strong>
+                    <span>Zero red tape review &bull; Immediate voucher</span>
+                  </div>
+                  <span class="biomarker-badge badge-optimal">Active</span>
+                </div>
+              </div>
+
+              <div class="data-panel-card">
+                <div class="panel-title">
+                  <span>Physician Network Summary</span>
+                </div>
+                <p class="stat-subtext mb-3" style="margin-bottom: 1rem; line-height: 1.6;">
+                  Physicians on the SANA network bypass insurance claim friction. Subsidies and patient vouchers are backed by pre-funded endowment grants.
+                </p>
+                <button class="btn btn-silver-pill w-100" onclick="showToast('Physician Network', 'Physician credentialing portal opening...')">
+                  <i class="fa-solid fa-id-badge"></i>
+                  <span>Credential As Clinician</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- View 3: Clinical Trials Explorer -->
+          <div class="terminal-content-view" id="terminalResearcherView">
+            <div class="portal-telemetry-grid">
+              <div class="data-panel-card">
+                <div class="panel-title">
+                  <span>Open Decentralized Trial Pipelines</span>
+                  <span class="pill-badge">8 Open Cohorts</span>
+                </div>
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>NCT-058291: Targeted KRAS-G12D Allosteric Inhibitors</strong>
+                    <span>Multi-center collaborative trial &bull; Fully funded by Sana Grants</span>
+                  </div>
+                  <span class="biomarker-badge badge-optimal">Phase II</span>
+                </div>
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>NCT-051829: CAR-NK Cell Adoptive Immunotherapy</strong>
+                    <span>Solid tumor cohort &bull; Patient travel fully subsidized</span>
+                  </div>
+                  <span class="biomarker-badge badge-optimal">Phase I/II</span>
+                </div>
+                <div class="biomarker-row">
+                  <div class="biomarker-info">
+                    <strong>SANA-G201: Epigenetic Reversion in Glioblastoma</strong>
+                    <span>Independent open-source lab grant cohort</span>
+                  </div>
+                  <span class="biomarker-badge badge-review">Recruiting</span>
+                </div>
+              </div>
+
+              <div class="data-panel-card">
+                <div class="panel-title">
+                  <span>Open Science Access</span>
+                </div>
+                <p class="stat-subtext" style="margin-bottom: 1rem; line-height: 1.6;">
+                  All clinical findings supported by Sana grants are published open-access with zero embargo periods.
+                </p>
+                <button class="btn btn-glass-pill w-100" onclick="showToast('Research Repository', 'Redirecting to open preprint datasets...')">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>Browse Open Datasets</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: WALL OF HOPE (INTERACTIVE DEDICATIONS) -->
+    <section class="wall-section" id="wall-of-hope">
+      <div class="container">
+        <div class="section-head">
+          <div class="pill-badge">Shared Resilience</div>
+          <h2 class="section-title">The Interactive Wall of Hope</h2>
+          <p class="section-lead">
+            Every digital ribbon represents a warrior, survivor, caregiver, or memorial. Dedicate a beacon today and illuminate someone’s journey.
+          </p>
+        </div>
+
+        <!-- Dedication Composer -->
+        <div class="wall-composer-box">
+          <form class="composer-grid" onsubmit="handleDedicationSubmit(event)">
+            <input type="text" class="composer-input" id="dedicationName" placeholder="Your Name or Honoree (e.g. For Marcus)" required>
+            <input type="text" class="composer-input" id="dedicationMessage" placeholder="Leave a message of strength, memory or recovery..." required>
+            
+            <div class="tone-selector" title="Select Ribbon Aesthetic Tone">
+              <label>
+                <input type="radio" name="toneOption" value="silver" checked class="tone-radio">
+                <span class="tone-pill tone-silver" title="Platinum Silver"></span>
+              </label>
+              <label>
+                <input type="radio" name="toneOption" value="obsidian" class="tone-radio">
+                <span class="tone-pill tone-obsidian" title="Obsidian Noir"></span>
+              </label>
+              <label>
+                <input type="radio" name="toneOption" value="cyan" class="tone-radio">
+                <span class="tone-pill tone-cyan" title="Luminous Cyan"></span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-silver-pill">
+              <i class="fa-solid fa-ribbon"></i>
+              <span>Pin Ribbon</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Live Dynamic Ribbons Grid -->
+        <div class="wall-ribbon-grid" id="wallRibbonGrid">
+          <!-- Injected dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: TESTIMONIALS & VOICES OF CLINICAL EXCELLENCE -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <div class="pill-badge">Patient & Physician Voices</div>
+          <h2 class="section-title">Enduring Impact, Real Lives</h2>
+          <p class="section-lead">Hear from the patients who fought back and the clinicians who stand alongside them.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div class="stars-strip">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-body">
+              “When standard therapies hit a dead end, Sana coordinated an urgent genomic re-biopsy and covered our specialized travel in less than 48 hours. Today I am 14 months cancer-free.”
+            </p>
+            <div class="author-profile">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Sarah J." class="author-photo">
+              <div>
+                <div class="author-title">Sarah Jenkins</div>
+                <div class="author-sub">Survivor & Sana Ambassador &bull; London</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars-strip">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-body">
+              “Sana provides what the medical establishment often lacks: speed and human sovereignty. Their grant fund has enabled 38 of my highest-risk oncology patients to access life-saving clinical trials.”
+            </p>
+            <div class="author-profile">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=120&q=80" alt="Dr. Raymond Vance" class="author-photo">
+              <div>
+                <div class="author-title">Dr. Raymond Vance, MD</div>
+                <div class="author-sub">Chief of Oncology &bull; St. Luke Cancer Network</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars-strip">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-body">
+              “The dignity this foundation provides is irreplaceable. You are never an insurance case number; you are given a personal advocate who answers every midnight call with clarity and compassion.”
+            </p>
+            <div class="author-profile">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80" alt="David M." class="author-photo">
+              <div>
+                <div class="author-title">David Moreno</div>
+                <div class="author-sub">Caregiver & Sustaining Donor &bull; Chicago</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SECURITY & TRUST STRIP -->
+    <section class="security-strip">
+      <div class="container security-flex">
+        <div class="sec-pill">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Zero-Knowledge 256-Bit Cryptography</span>
+        </div>
+        <div class="sec-pill">
+          <i class="fa-solid fa-hospital-user"></i>
+          <span>HIPAA & GDPR Sovereign Compliant</span>
+        </div>
+        <div class="sec-pill">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Quarterly Public Financial Audits</span>
+        </div>
+        <div class="sec-pill">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>501(c)(3) Global Registered Non-Profit</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: FREQUENTLY ASKED QUESTIONS -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="pill-badge">Clarity & Governance</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-container">
+          
+          <div class="faq-item open">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span>How does SANA deploy donations and member pledges?</span>
+              <i class="fa-solid fa-chevron-down faq-icon-chevron"></i>
+            </button>
+            <div class="faq-answer-pane">
+              <p>
+                Over 99.4% of every donated dollar goes directly to verified emergency treatment stipends, subsidized multi-omics genomic profiling, and independent open-source clinical research labs. Our comprehensive financials are independently audited every quarter and available publicly on our transparency portal.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span>How can a patient or physician apply for immediate emergency aid?</span>
+              <i class="fa-solid fa-chevron-down faq-icon-chevron"></i>
+            </button>
+            <div class="faq-answer-pane">
+              <p>
+                Patients, caregivers, or hospital social workers can submit an expedited grant request via the Member Portal or through an accredited hospital partner. Applications are reviewed by our clinical board with decisions and fund disbursement completed within 48 to 72 business hours.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span>What is included in the Sovereign Member Portal?</span>
+              <i class="fa-solid fa-chevron-down faq-icon-chevron"></i>
+            </button>
+            <div class="faq-answer-pane">
+              <p>
+                Members gain access to real-time clinical trial matching, their encrypted biomarker vault, direct messaging with a dedicated oncology nurse advocate, and access to second-opinion consultations from our global network of medical specialists.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span>How does SANA protect patient genomic and medical privacy?</span>
+              <i class="fa-solid fa-chevron-down faq-icon-chevron"></i>
+            </button>
+            <div class="faq-answer-pane">
+              <p>
+                All personal health telemetry is safeguarded by client-side zero-knowledge encryption. Sana never monetizes, licenses, or sells patient records. Decryption occurs strictly on your device or when explicitly shared with a treating physician of your choice.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: HIGH-IMPACT NOIR CTA BANNER -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-banner-card">
+          <img src="assets/noir_artwork.png" alt="Sana Grainy Radiant Beam" class="cta-banner-bg-img" aria-hidden="true">
+          <h2 class="cta-title">Step Into the Light of Sovereign Care.</h2>
+          <p class="cta-lead">
+            Join over 148,000 warriors, physicians, and benefactors advancing the future of compassionate, high-precision medicine.
+          </p>
+
+          <form class="cta-form" onsubmit="handleNewsletterSubmit(event)">
+            <input type="email" class="cta-input" id="newsletterInput" placeholder="Enter your email for priority briefings..." required>
+            <button type="submit" class="cta-submit-btn">Get Access</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- GLOBAL SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      
+      <div class="footer-brand-pane">
+        <div class="brand-wrap">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="brand-name">SANA</span>
+          <span class="brand-tag">OS 3.4</span>
+        </div>
+        <p class="footer-lead">
+          Pioneering the intersection of autonomous clinical intelligence, genomic advocacy, and direct patient care across the globe.
+        </p>
+        <div class="footer-social-row">
+          <a href="#" class="footer-social-link" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="footer-social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="footer-social-link" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Platform & OS</h4>
+        <ul class="footer-links-list">
+          <li><a href="#architecture">Genomic Profiling</a></li>
+          <li><a href="#architecture">Sovereign Vault</a></li>
+          <li><a href="#interactive-preview">Clinical Terminal</a></li>
+          <li><a href="#telemetry">Global Registry</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Community & Care</h4>
+        <ul class="footer-links-list">
+          <li><a href="#wall-of-hope">Wall of Dedications</a></li>
+          <li><a href="#testimonials">Survivor Stories</a></li>
+          <li><a href="javascript:void(0)" class="open-auth-modal" data-mode="signup">Direct Grant Program</a></li>
+          <li><a href="#faq">Governance & Audits</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Access & Legal</h4>
+        <ul class="footer-links-list">
+          <li><a href="javascript:void(0)" class="open-auth-modal" data-mode="signin">Member Login</a></li>
+          <li><a href="javascript:void(0)" class="open-auth-modal" data-mode="signup">Register Account</a></li>
+          <li><a href="#">Privacy Protocol</a></li>
+          <li><a href="#">Terms of Sovereignty</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom-bar">
+      <div>&copy; 2026 SANA Health & Hope Foundation. All rights reserved. 501(c)(3) Sovereign Non-Profit.</div>
+      <div class="footer-legal-links">
+        <a href="#">System Status: <span class="text-emerald">All Operational</span></a>
+        <span>&bull;</span>
+        <a href="#">Cryptographic Key Index</a>
+        <span>&bull;</span>
+        <a href="#">Public Audit Disclosures</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GLOBAL AUTH MODAL: 1:1 REPLICATION OF THE USER'S INSPIRATION -->
+  <div class="modal-backdrop" id="globalAuthModal" aria-hidden="true">
+    <div class="modal-card-dialog">
+      <button class="modal-close-trigger" id="closeModalTrigger" aria-label="Close dialog">&times;</button>
+      
+      <div class="inspiration-card">
+        
+        <!-- Left Form Pane -->
+        <div class="card-form-pane">
+          <div class="auth-mode-tabs" role="tablist">
+            <button type="button" class="auth-tab-btn active" id="modalTabSignIn" onclick="switchModalAuthMode('signin')">Sign In</button>
+            <button type="button" class="auth-tab-btn" id="modalTabSignUp" onclick="switchModalAuthMode('signup')">Create Account</button>
+          </div>
+
+          <div class="form-header-box">
+            <h3 class="form-title" id="modalAuthHeading">Welcome Back</h3>
+            <p class="form-subtitle" id="modalAuthSub">Enter your sovereign credentials to access your portal</p>
+          </div>
+
+          <form class="inspiration-form" id="modalAuthForm" onsubmit="handleModalAuthSubmit(event)">
+            
+            <!-- Dual First / Last Name Row (Inspiration Pill Layout) -->
+            <div class="pill-row" id="modalNameRow">
+              <div class="pill-input-wrap">
+                <input type="text" class="inspiration-input" id="modalFirstName" placeholder="First Name">
+              </div>
+              <div class="pill-input-wrap">
+                <input type="text" class="inspiration-input" id="modalLastName" placeholder="Last Name">
+              </div>
+            </div>
+
+            <div class="pill-input-wrap">
+              <input type="email" class="inspiration-input" id="modalEmail" placeholder="Email Address" required>
+              <span class="input-icon-btn"><i class="fa-solid fa-lock"></i></span>
+            </div>
+
+            <div class="pill-input-wrap">
+              <input type="password" class="inspiration-input" id="modalPassword" placeholder="Password" required>
+              <button type="button" class="input-icon-btn" onclick="togglePasswordVisibility('modalPassword', this)" aria-label="Toggle password view">
+                <i class="fa-regular fa-eye-slash"></i>
+              </button>
+            </div>
+
+            <div class="form-utility-row">
+              <label class="remember-label">
+                <input type="checkbox" class="custom-checkbox" checked id="modalRememberCheck">
+                <span>Remember 30 days</span>
+              </label>
+              <a href="javascript:void(0)" onclick="handleForgotPasswordNotice()" class="forgot-btn">Forgot password?</a>
+            </div>
+
+            <!-- The Exact Inspiration Silver Pill Button -->
+            <button type="submit" class="btn-inspiration-submit" id="modalSubmitBtn">
+              <span id="modalSubmitBtnLabel">Sign in</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <!-- SSO Single-Click Divider & Pills -->
+            <div class="sso-divider">
+              <span class="sso-divider-line"></span>
+              <span class="sso-divider-text">or continue with</span>
+              <span class="sso-divider-line"></span>
+            </div>
+
+            <div class="sso-pills-row">
+              <button type="button" class="btn-sso" onclick="handleSsoSimulation('Google')">
+                <i class="fa-brands fa-google"></i>
+                <span>Google</span>
+              </button>
+              <button type="button" class="btn-sso" onclick="handleSsoSimulation('Apple')">
+                <i class="fa-brands fa-apple"></i>
+                <span>Apple</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right Art Pane: The Grainy Metallic Light Arc Artwork -->
+        <div class="card-art-pane">
+          <img src="assets/noir_artwork.png" alt="Sana Grainy Radiant Light Arc" class="art-texture-img">
+          <div class="art-gradient-overlay"></div>
+          <div class="floating-telemetry-badge">
+            <div class="telemetry-row">
+              <span class="telemetry-tag"><i class="fa-solid fa-shield-halved"></i> VAULT ENCRYPTED</span>
+              <span class="telemetry-time">256-BIT AES</span>
+            </div>
+            <div class="telemetry-title">Sovereign Health Intelligence Mesh</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-toast" id="toastBox">
+    <div class="toast-icon" id="toastIconEl">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div>
+      <div class="toast-title" id="toastTitleEl">Notification</div>
+      <div class="toast-desc" id="toastDescEl">Action completed successfully.</div>
+    </div>
+  </div>
+
+  <!-- Custom Noir Logic Script -->
+  <script src="script.js"></script>
+</body>
+</html>
